@@ -34,7 +34,7 @@ public class LoanDecisionServiceImpl implements LoanDecisionService {
         int loanPeriod = loan.period();
         float creditScore = this.calculateCreditScore(creditModifier, loanAmount, loanPeriod);
         boolean approved = creditScore >= 1;
-        int amount = this.calculateAmount(approved, creditModifier, loanPeriod);
+        int amount = this.calculateAmount(creditModifier, loanPeriod);
         return approved
                 ? LoanDecisionResponse.positive(amount)
                 : LoanDecisionResponse.negative(amount);
@@ -44,26 +44,14 @@ public class LoanDecisionServiceImpl implements LoanDecisionService {
         return ((float) creditModifier / loanAmount) * loanPeriod;
     }
 
-    private int calculateAmount(boolean approved, int creditModifier, int loanPeriod) {
+    private int calculateAmount(int creditModifier, int loanPeriod) {
         int amount = creditModifier * loanPeriod;
-        return approved
-                ? this.calculateApprovedAmount(amount, creditModifier, loanPeriod)
-                : this.calculateDisapprovedAmount(amount, creditModifier, loanPeriod);
-    }
-
-    private int calculateApprovedAmount(int amount, int creditModifier, int loanPeriod) {
         if (amount > Loan.MAX_LOAN_AMOUNT && loanPeriod > Loan.MIN_LOAN_PERIOD) {
             int newLoanPeriod = loanPeriod - 1;
-            return this.calculateApprovedAmount(creditModifier * newLoanPeriod, creditModifier, newLoanPeriod);
-        }
-
-        return amount;
-    }
-
-    private int calculateDisapprovedAmount(int amount, int creditModifier, int loanPeriod) {
-        if (amount < Loan.MIN_LOAN_AMOUNT && loanPeriod < Loan.MAX_LOAN_PERIOD) {
+            return this.calculateAmount(creditModifier, newLoanPeriod);
+        } else if (amount < Loan.MIN_LOAN_AMOUNT && loanPeriod < Loan.MAX_LOAN_PERIOD) {
             int newLoanPeriod = loanPeriod + 1;
-            return this.calculateDisapprovedAmount(creditModifier * newLoanPeriod, creditModifier, newLoanPeriod);
+            return this.calculateAmount(creditModifier, newLoanPeriod);
         }
 
         return amount;
