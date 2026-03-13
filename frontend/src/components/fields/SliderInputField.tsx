@@ -40,7 +40,7 @@ export const SliderInputField = (
                         <span>{max}</span>
                     </div>
                 </div>
-                <InputGroup className="h-16 rounded-[1vw]">
+                <InputGroup className="flex-1/2 h-16 rounded-[1vw]">
                     <InputGroupAddon className="pr-2 border-r">
                         <InputGroupText>{addon}</InputGroupText>
                     </InputGroupAddon>
