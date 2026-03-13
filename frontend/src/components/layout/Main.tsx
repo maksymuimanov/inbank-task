@@ -1,4 +1,4 @@
-import {LoanDecisionCard} from "../card/LoanDecisionCard.tsx";
+import {LoanDecisionCard} from "@/components/cards/LoanDecisionCard.tsx";
 
 export const Main = () => {
     return (

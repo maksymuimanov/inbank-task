@@ -1,7 +1,7 @@
 export type LoanDecisionRequest = {
     "personalCode": string,
-    "loanAmount": number,
-    "loanPeriod": number
+    "amount": number,
+    "period": number
 }
 
 export type LoanDecisionResponse = {
