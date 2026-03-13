@@ -12,7 +12,7 @@ export const LoanDecisionCard = () => {
         <div className="flex flex-col gap-6">
             <Card>
                 <CardHeader>
-                    <CardTitle className="text-xl italic">Loan decision engine</CardTitle>
+                    <CardTitle className="text-2xl italic">Loan decision engine</CardTitle>
                     <CardDescription>
                         Enter your personal code, loan amount and period below to decide whether to approve the loan
                     </CardDescription>
