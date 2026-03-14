@@ -32,6 +32,6 @@ export function postRequest(formData: FormData,
         })
         .then(response => {
             setResponse(response.data);
-            setTimeout(() => {setLoading(false);}, 3000);
+            setLoading(false);
         });
 }
