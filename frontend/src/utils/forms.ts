@@ -4,8 +4,8 @@ import * as React from "react";
 
 export function formRequest(formData: FormData): LoanDecisionRequest {
     const personalCode = formData.get("personalCode") as string;
-    const amount = parseInt(formData.get("amount") as string);
-    const period = parseInt(formData.get("period") as string);
+    const amount = Number.parseInt(formData.get("amount") as string);
+    const period = Number.parseInt(formData.get("period") as string);
 
     return {
         "personalCode": personalCode,
@@ -24,7 +24,7 @@ export function postRequest(formData: FormData,
     const url = "http://localhost:8080/api/v1.0/loans/decision";
     axios.post<LoanDecisionResponse>(url, request)
         .catch(error => {
-            if (error.status === 404) setErrorMessage("Personal code not found");
+            if (error.message) setErrorMessage(error.message);
             const errorResponse = error.response;
             errorResponse.data.status = "NEGATIVE";
             errorResponse.data.amount = 0;

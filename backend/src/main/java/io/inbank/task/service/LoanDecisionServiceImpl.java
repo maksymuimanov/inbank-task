@@ -28,7 +28,7 @@ public class LoanDecisionServiceImpl implements LoanDecisionService {
     }
 
     private LoanDecisionResponse approve(CreditSegment creditSegment, Loan loan) {
-        if (creditSegment.isDebt()) return LoanDecisionResponse.debt();
+        if (creditSegment.isDebt()) return LoanDecisionResponse.invalid();
         int creditModifier = creditSegment.getCreditModifier();
         int loanAmount = loan.amount();
         int loanPeriod = loan.period();
