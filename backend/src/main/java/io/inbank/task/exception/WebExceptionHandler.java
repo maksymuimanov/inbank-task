@@ -13,6 +13,8 @@ import java.util.Map;
 
 /**
  * Global REST exception handler for API validation errors.
+ *
+ * @see io.inbank.task.controller.LoanDecisionController
  */
 @RestControllerAdvice
 public class WebExceptionHandler {
