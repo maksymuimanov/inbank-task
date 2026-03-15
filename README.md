@@ -106,11 +106,11 @@ Evaluates a loan request and returns an approval decision.
 
 ## How to improve assignment:
 
-I would suggest is returning the effective loan period used 
-by the backend in the response. Currently, the backend may internally adjust 
-the loan period when calculating the loan decision, but the response still 
-returns the amount without indicating that the period has changed. 
-This can be misleading for the frontend because the returned amount may correspond to 
-a different loan period than the one initially requested. Including the actual loan period 
-used in the calculation would clarify the response and prevent inconsistencies between 
-the backend logic and the frontend representation.
+I would suggest returning the loan period used by the backend in the response.
+Currently, the backend may internally adjust the loan period when calculating
+the loan decision, but the response still returns the amount without indicating
+that the period has changed. This can be misleading for the frontend because the
+returned amount may correspond to a different loan period than the one initially 
+requested. Including the actual loan period used in the calculation would clarify 
+the response and prevent inconsistencies between the backend logic and the frontend
+representation.
