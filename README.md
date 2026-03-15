@@ -103,3 +103,14 @@ Evaluates a loan request and returns an approval decision.
   - `33333333333`: credit modifier = 300  
   - `49002010998`: credit modifier = 1000
   - `44444444444`: credit modifier = 1000
+
+## How to improve assignment:
+
+I would suggest is returning the effective loan period used 
+by the backend in the response. Currently, the backend may internally adjust 
+the loan period when calculating the loan decision, but the response still 
+returns the amount without indicating that the period has changed. 
+This can be misleading for the frontend because the returned amount may correspond to 
+a different loan period than the one initially requested. Including the actual loan period 
+used in the calculation would clarify the response and prevent inconsistencies between 
+the backend logic and the frontend representation.
