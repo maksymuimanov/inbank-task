@@ -16,6 +16,18 @@ A loan decision system that evaluates loan applications based on customer credit
 
 ## Running the Application
 
+### Backend + Frontend
+
+**Required**:
+- Java 21
+- Maven
+- Node.js
+
+**Start project:**
+```bash
+./start.sh
+```
+
 ### Backend
 
 **Required**:
@@ -23,21 +35,17 @@ A loan decision system that evaluates loan applications based on customer credit
 - Maven
 
 **Build project:**
-```bash
+```shell
 cd backend
 mvn clean compile
 ```
 
 **Start application:**
-```bash
+```shell
 mvn spring-boot:run
 ```
 
 **Default port:** 8080
-
-**Verify application is running:**
-- Check for startup logs showing "Started BackendApplication"
-- Access health endpoint at http://localhost:8080/actuator/health
 
 ### Frontend
 
@@ -45,13 +53,13 @@ mvn spring-boot:run
 - Node.js
 
 **Install dependencies:**
-```bash
+```shell
 cd frontend
 npm install
 ```
 
 **Start dev server:**
-```bash
+```shell
 npm run dev
 ```
 
@@ -61,7 +69,7 @@ npm run dev
 
 **Swagger UI URL:** http://localhost:8080/swagger-ui.html
 
-All endpoints can be tested directly through the Swagger UI interface with interactive request/response examples.
+Backend API can be tested directly through the Swagger UI interface with interactive request/response examples.
 
 ## API Overview
 
@@ -86,8 +94,12 @@ Evaluates a loan request and returns an approval decision.
 
 ## Data
 
-- Mock data includes 4 test customers:
+- Mock data includes 8 test credit segments:
   - `49002010965`: debt = true (automatic rejection)
+  - `11111111111`: debt = true (automatic rejection)
   - `49002010976`: credit modifier = 100
+  - `22222222222`: credit modifier = 100
   - `49002010987`: credit modifier = 300  
+  - `33333333333`: credit modifier = 300  
   - `49002010998`: credit modifier = 1000
+  - `44444444444`: credit modifier = 1000
